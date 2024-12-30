@@ -1,6 +1,6 @@
-// git branch -M "08-/liftingStateUp" 
-// git commit -m "lifting state up"
-// git push -u origin "08-/liftingStateUp" 
+// git branch -M "08-2/useReducer" 
+// git commit -m "useReducer"
+// git push -u origin -M "08-2/useReducer" 
 
 
 
