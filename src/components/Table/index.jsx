@@ -25,7 +25,7 @@ export const Table = ({data, onDelete}) => {
 
   return (
     <div>
-      <h1>Student length: {data.length}</h1>
+      <h1>Student length: {data?.length}</h1>
       {/* <input onChange={searchByName} type="text" placeholder="name" />
       <input onChange={searchByTel} type="text" placeholder="telefon" /> */}
       <table border={1} style={{ borderCollapse: "collapse", width: "100%" }}>
@@ -40,7 +40,7 @@ export const Table = ({data, onDelete}) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((std) => {
+          {data?.map((std) => {
             return (
               <tr key={std.id}>
                 <td>{std.id}</td>
