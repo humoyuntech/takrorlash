@@ -1,27 +1,14 @@
-// eslint-disable-next-line no-unused-vars
-import { useState } from "react";
-import { students } from "../../mock/students";
+import {UserContext} from '../../contex/user'
 
 
-export const Table = ({data, onDelete}) => {
+export const Table = () => {
 
+const [data, dispatch] = UserContext();
 
-  const searchByName = ({ target: { value } }) => {
-    let res = students.filter((student) => student.name.includes(value));
-    setData(res);
-  };
-
-  const searchByTel = ({ target: { value } }) => {
-    let res = students.filter((student) =>
-      student.phone.split(" ").join("").includes(value)
-    );
-    setData(res);
-  };
-
-  const mainStyle = {
-    color: "tomato",
-    cursor: "pointer"
-  }
+const onDelete = (id)=>{
+  let res = data.filter((val) => val.id !== id)
+  dispatch({type: 'delete', payload: res})
+}
 
   return (
     <div>
@@ -48,7 +35,7 @@ export const Table = ({data, onDelete}) => {
                 <td>{std.phone}</td>
                 <td>{std.age}</td>
                 <td>{std.department}</td>
-                <td onClick={() => onDelete(std.id)} style={mainStyle}>Delete</td>
+                <td style={{color: "tomato", cursor: "pointer"}} onClick={()=>onDelete(std.id)}>Delete</td>
               </tr>
             );
           })}
