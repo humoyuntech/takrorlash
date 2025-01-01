@@ -1,13 +1,16 @@
 /* eslint-disable react/prop-types */
-import { createContext } from "react";
-
+import { createContext, useReducer, useContext } from "react";
+import { initialState, reducer } from "./reducer";
 // eslint-disable-next-line react-refresh/only-export-components
-export const UserContext = createContext();
+export const Context = createContext();
+export const UserContext = () => useContext(Context);
 
 export const UserProvider = (props) => {
+    const [state, dispatch] = useReducer(reducer, initialState);
+
     return(
-        <UserContext.Provider value="Men Humoyunman">
+        <Context.Provider value={[state, dispatch]}>
             {props.children}
-        </UserContext.Provider>
+        </Context.Provider>
     )
 }
