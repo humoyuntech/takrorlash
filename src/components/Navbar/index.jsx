@@ -2,14 +2,14 @@
 
 import { Wrapper, MenuItem } from "./style";
 import { UserContext } from "../../contex/user";
-import { memo } from "react";
 
-export const Navbar = (props) => {
+
+export const Navbar = () => {
     const [val] = UserContext();
 
     console.log('Navbar render');
-    console.log('Callback', props.title("Rustamov"));
-    console.log("Memo", props.mem.name);
+    // console.log('Callback', props.title("Rustamov"));
+    // console.log("Memo", props.mem.name);
     
 
   return (
@@ -22,4 +22,4 @@ export const Navbar = (props) => {
   );
 };
 
-export default memo(Navbar);
+export default Navbar;
