@@ -1,40 +1,41 @@
-import { useCallback, useMemo, useState } from "react";
+// eslint-disable-next-line no-unused-vars
+import { useCallback, useMemo, useState, useRef } from "react";
 import Navbar from "../components/Navbar";
 import Table from "../components/Table";
 
 export const Root = () => {
-  let [state, setState] = useState(0);
+  // let [state, setState] = useState(0);
+
+  const title = useRef(null);
 
   let onPlus = () => {
-    setState(state + 1)
+    // setState(state + 1)
   }
 
+
   let onMinus = () => {
-    setState(state - 1)
+    // setState(state - 1)
   }
 
   console.log('Root render');
   
-  const title = {name: "Khumoyun"};
+  const onSubmit = () => {
+    console.log("submit", title.current.value);
+    
+  }
 
-  const memoTitle = useMemo(() => {
-    return title
-  }, []);
-
-  const TitleCallback = useCallback((props) => {
-    return {...title, props}
-  }, []);
 
 
   return (
     <div>
-      <Navbar title={TitleCallback} mem ={memoTitle} />
-      <Table title='Rustamov' />
+      <Navbar />
+      <Table />
 
-      <h1>{state}</h1>
+      {/* <h1>{state}</h1> */}
       <button onClick={onPlus}>Plus</button>
       <button onClick={onMinus}>Minus</button>
-      
+      <input ref={title} type="text" />
+      <button onClick={onSubmit}>Submit</button>
     </div>
   );
 };
