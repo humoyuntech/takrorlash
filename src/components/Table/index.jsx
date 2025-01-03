@@ -1,7 +1,10 @@
+/* eslint-disable react/prop-types */
+
+import { memo } from 'react';
 import {UserContext} from '../../contex/user'
 
 
-export const Table = () => {
+export const Table = (props) => {
 
 const [data, dispatch] = UserContext();
 
@@ -9,6 +12,8 @@ const onDelete = (id)=>{
   let res = data.filter((val) => val.id !== id)
   dispatch({type: 'delete', payload: res})
 }
+
+console.log('Table render', props.title);
 
   return (
     <div>
@@ -45,4 +50,4 @@ const onDelete = (id)=>{
   );
 };
 
-export default Table;
+export default memo(Table);
